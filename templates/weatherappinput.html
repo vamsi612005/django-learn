@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+{% extends 'navbar.html' %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% block body %}
+
+<div class="container text-center">
+  <div class="row align-items-start">
+    <div class="col">
+      <br> <br>
+        <h1> Welcome to Varshitha's Travel and Tourism Management</h1>
+
+        <form method="post" action="{% url 'weatherlogic' %}">
+        {% csrf_token %}
+            <br>
+            <h4>
+                <label>Enter a City</label>
+                <input type="text" name="place">
+                <br><br>
+                <button type="submit" class="btn btn-success btn-lg"> Check current weather</button>
+            </h4>
+        </form>
+    </div>
+    <div class="col">
+      <h1>Top vacation destinations</h1>
+        <br><br>
+        <h1>
+            <h1>
+    {% if error_message %}
+    <p> {{ error_message }}</p>
+    {% else %}
+    <p>city: {{ city }}</p>
+    <p>temperature1: {{ temperature1 }} &#8451;</p>
+    <p>humidity: {{ humidity }}</p>
+    {% endif %}
+</h1>
+
+        </h1>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+</body>
+</html>
